@@ -38,6 +38,7 @@ const Pin = (props: { pin: { image: any; title: string } }) => {
 const styles = StyleSheet.create({
   pin: {
     width: "100%",
+    padding: 4,
   },
   title: {
     fontSize: 16,
@@ -48,8 +49,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: "auto",
-    borderRadius: 25,
+    borderRadius: 20,
     aspectRatio: 1 / 2,
   },
   heartBtn: {
