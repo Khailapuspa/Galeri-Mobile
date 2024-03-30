@@ -4,7 +4,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
-const Pin = (props: { pin: {id: string; image: any; title: string } }) => {
+const Pin = (props: { pin: {id: string; image: string; title: string } }) => {
   const { id, image, title } = props.pin;
 
   const [ratio, setRatio] = useState(1);
