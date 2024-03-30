@@ -17,6 +17,8 @@ import Foto5 from "./../../assets/images/content5.jpeg";
 import Foto6 from "./../../assets/images/content6.jpeg";
 import Foto7 from "./../../assets/images/content7.jpeg";
 import Foto8 from "./../../assets/images/content8.jpeg";
+import MasonryList from "@/components/MasonryList";
+import pins from "@/assets/data/pins";
 
 export default function TabOneScreen() {
   const images = [
@@ -31,108 +33,91 @@ export default function TabOneScreen() {
   ];
 
   return (
-    <FlatList
-      data={[""]}
-      keyExtractor={() => "empty-key"}
-      ListHeaderComponent={() => (
-        <View style={styles.container}>
-          <View style={styles.subContainer}>
-            <View style={styles.row}>
-              <Text
-                style={{
-                  fontSize: 27,
-                  fontWeight: "bold",
-                  color: "#FFFFFF",
-                  padding: 10,
-                }}
-              >
-                Hi, Kila!
-              </Text>
-              <FontAwesome
-                name="bell"
-                size={20}
-                color={"#FFFFFF"}
-                style={{ marginStart: "auto" }}
-              />
-              <Image
-                source={ProfileUser}
-                style={{
-                  width: 50,
-                  height: 50,
-                  borderRadius: 25,
-                  marginLeft: 10,
-                }}
-              />
-            </View>
-
-            <Text style={{ fontSize: 13, color: "#FFFFFF", marginLeft: 10 }}>
-              Apa yang kamu cari hari ini ?
-            </Text>
-
-            <View style={styles.searchContainer}>
-              <TextInput placeholder="Search ..." style={styles.searchInput} />
-            </View>
-          </View>
-
-          <View style={styles.cardContainer}>
-            <View style={{ ...styles.card, backgroundColor: "#6ACACA" }}>
-              <FontAwesome name="bar-chart" size={20} color={"#FFFFFF"} />
-            </View>
-            <View
-              style={{
-                ...styles.card,
-                marginHorizontal: 10,
-                backgroundColor: "#80CCBF",
-              }}
-            >
-              <FontAwesome name="picture-o" size={20} color={"#FFFFFF"} />
-            </View>
-            <View style={{ ...styles.card, backgroundColor: "#6AAFA3" }}>
-              <FontAwesome name="folder-open" size={20} color={"#FFFFFF"} />
-            </View>
-          </View>
-
-          <View style={styles.textContainer}>
-            <Text
-              style={{ color: "#000000", fontSize: 18, fontWeight: "bold" }}
-            >
-              Popular Picture
-            </Text>
-            <Text
-              style={{
-                color: "#2068DF",
-                fontSize: 14,
-                fontWeight: "bold",
-                marginTop: 4,
-                marginLeft: 150,
-              }}
-            >
-              See All
-            </Text>
-          </View>
-
-          <View style={styles.contentContainer}>
-            <FlatList
-              data={images}
-              keyExtractor={(item) => item.id}
-              renderItem={({ item }) => (
-                <Image source={item.image} style={styles.content} />
-              )}
-              contentContainerStyle={styles.list}
-              numColumns={2}
-            />
-          </View>
+    <ScrollView style={styles.container} contentContainerStyle={{ width: "100%"}}>
+      <View style={styles.subContainer}>
+        <View style={styles.row}>
+          <Text
+            style={{
+              fontSize: 27,
+              fontWeight: "bold",
+              color: "#FFFFFF",
+              padding: 10,
+            }}
+          >
+            Hi, Kila!
+          </Text>
+          <FontAwesome
+            name="bell"
+            size={20}
+            color={"#FFFFFF"}
+            style={{ marginStart: "auto" }}
+          />
+          <Image
+            source={ProfileUser}
+            style={{
+              width: 50,
+              height: 50,
+              borderRadius: 25,
+              marginLeft: 10,
+            }}
+          />
         </View>
-      )}
-      renderItem={() => null}
-    />
+
+        <Text style={{ fontSize: 13, color: "#FFFFFF", marginLeft: 10 }}>
+          Apa yang kamu cari hari ini ?
+        </Text>
+
+        <View style={styles.searchContainer}>
+          <TextInput placeholder="Search ..." style={styles.searchInput} />
+        </View>
+      </View>
+
+      <View style={styles.cardContainer}>
+        <View style={{ ...styles.card, backgroundColor: "#6ACACA" }}>
+          <FontAwesome name="bar-chart" size={20} color={"#FFFFFF"} />
+        </View>
+        <View
+          style={{
+            ...styles.card,
+            marginHorizontal: 10,
+            backgroundColor: "#80CCBF",
+          }}
+        >
+          <FontAwesome name="picture-o" size={20} color={"#FFFFFF"} />
+        </View>
+        <View style={{ ...styles.card, backgroundColor: "#6AAFA3" }}>
+          <FontAwesome name="folder-open" size={20} color={"#FFFFFF"} />
+        </View>
+      </View>
+
+      <View style={styles.textContainer}>
+        <Text style={{ color: "#000000", fontSize: 18, fontWeight: "bold" }}>
+          Popular Picture
+        </Text>
+        <Text
+          style={{
+            color: "#2068DF",
+            fontSize: 14,
+            fontWeight: "bold",
+            marginTop: 4,
+            marginLeft: 150,
+          }}
+        >
+          See All
+        </Text>
+      </View>
+
+      <View style={styles.contentContainer}>
+        <MasonryList pins={pins}/>
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    backgroundColor: "#FFFFFF",
   },
   subContainer: {
     width: "100%",
@@ -197,12 +182,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   contentContainer: {
+    padding: 10,
     flexDirection: "row",
-    paddingHorizontal: 15,
-    backgroundColor: "#70CA6A",
-    flexWrap: "wrap",
-    marginBottom: 10,
-    paddingVertical: 20,
+  },
+  column: {
+    flex: 1,
   },
   content: {
     flex: 1,

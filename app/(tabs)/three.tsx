@@ -3,6 +3,8 @@ import React from "react";
 import MasonryList from "@/components/MasonryList";
 import pins from "@/assets/data/pins";
 import { Entypo, Feather } from "@expo/vector-icons";
+// import profile from "./../../assets/images/content2.jpg";
+import profile from "./../../assets/images/content2.jpg"
 
 export default function three() {
   return (
@@ -13,13 +15,13 @@ export default function three() {
           <Entypo name="dots-three-horizontal" size={24} color= "black" style={styles.icon} />
         </View>
         <Image
-          source={{
-            uri: "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.png",
-          }}
-          style={styles.image}
+          source={profile}
+          style={{width: 200,
+            height: 200,
+            borderRadius: 200,}}
         />
-        <Text style={styles.title}>three</Text>
-        <Text style={styles.subtitle}>Hi I'm james</Text>
+        <Text style={styles.title}>Khaila Puspa</Text>
+        <Text style={styles.subtitle}>Followers 1k | Follwoing 10</Text>
       </View>
 
       <MasonryList pins={pins} />
@@ -30,6 +32,7 @@ export default function three() {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
+    backgroundColor: "#FFFFFF",
   },
   title: {
     fontSize: 20,
@@ -42,9 +45,9 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   image: {
-    width: 200,
+    width: 10,
     aspectRatio: 1,
-    borderRadius: 200,
+    borderRadius: 700,
     marginVertical: 10,
   },
   header: {
